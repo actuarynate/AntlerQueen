@@ -4,27 +4,35 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 10px;
     font-family: Verdana, sans-serif;
-    font-size: 1.8em;
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    box-sizing: border-box;
 }
 
 .circle-container {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: min(95vw, 500px);
+    aspect-ratio: 1 / 1;
 }
 
 .inner-circle {
     position: absolute;
-    width: 300px;
-    height: 300px;
+
+    /* 60% of parent size */
+    width: 60%;
+    height: 60%;
+
+    /* center within outer circle */
+    left: 20%;
+    top: 20%;
+
     border: 2px solid white;
     border-radius: 50%;
-    left: 100px;
-    top: 100px;
-    overflow: hidden; 
+    overflow: hidden;
+
     background-image: url("./Gemini_Generated_Image_rsu00rsu00rsu00r.jpg");
     background-size: 125%;
     background-position: center;
@@ -33,25 +41,54 @@ body {
 
 .dot {
     position: absolute;
-    width: 20px;
-    height: 20px;
+
+    width: clamp(12px, 3vw, 20px);
+    height: clamp(12px, 3vw, 20px);
+
     background: white;
     border-radius: 50%;
     cursor: pointer;
     transform: translate(-50%, -50%);
+
+    box-shadow: 0 0 4px rgba(255,255,255,.4);
 }
 
 .number {
     position: absolute;
-    width: 35px;
-    height: 35px;
+
+    width: clamp(30px, 8vw, 42px);
+    height: clamp(30px, 8vw, 42px);
+
     border: none;
     border-radius: 50%;
+
     color: white;
     font-weight: bold;
+
+    font-size: clamp(18px, 4vw, 28px);
+    line-height: clamp(30px, 8vw, 42px);
+
     text-align: center;
-    line-height: 35px;
     cursor: pointer;
     transform: translate(-50%, -50%);
     user-select: none;
+
+    text-shadow: 0 0 8px rgba(255,255,255,.6);
+}
+
+/* Small phone adjustments */
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .circle-container {
+        width: 98vw;
+    }
+
+    .inner-circle {
+        border-width: 1px;
+    }
 }
