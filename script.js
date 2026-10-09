@@ -39,13 +39,17 @@ let videoLaunched = false;
     "purple"
 ];
 
-const centerX = 250;
-const centerY = 250;
+const containerSize =
+    container.getBoundingClientRect().width;
 
+const centerX = containerSize / 2;
+const centerY = containerSize / 2;
+    
 // ----------------------
 // INNER COLOR DOTS
 // ----------------------
-const innerRadius = 150;
+
+const innerRadius = containerSize * 0.30;
 
 for (let i = 0; i < 7; i++) {
 
@@ -82,7 +86,7 @@ for (let i = 0; i < 7; i++) {
 // ----------------------
 // OUTER NUMBER RING
 // ----------------------
-const outerRadius = 220;
+const outerRadius = containerSize * 0.44;
 const planetSymbols = [
     "☉", // Sun
     "☽", // Moon
